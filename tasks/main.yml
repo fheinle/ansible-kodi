@@ -1,0 +1,54 @@
+---
+- name: add input group
+  become: yes
+  group:
+    name=input
+    system=yes
+    state=present
+
+- name: install udev input rules
+  become: yes
+  copy:
+    src=input.rules
+    dest=/etc/udev/rules.d/99-input.rules
+    owner=root
+    group=root
+    mode=0644
+
+- name: install udev permission rules
+  become: yes
+  copy:
+    src=permissions.rules
+    dest=/etc/udev/rules.d/10-permissions.rules
+
+- name: add pi user to relevant groups for kodi
+  become: yes
+  user:
+    name=pi
+    append=yes
+    groups=audio,video,input,dialout,plugdev,tty
+
+- name: set gpu memory to 160 MB for kodi
+  become: yes
+  lineinfile:
+    dest=/boot/config.txt
+    regexp="^gpu_mem"
+    line="gpu_mem=160"
+
+- name: install kodi
+  become: yes
+  apt:
+    name=kodi
+    state=present
+    update_cache=yes
+    cache_valid_time=3600
+
+- name: install guisettings.xml in order to see a menu
+  become: yes
+  copy:
+    src=guisettings.xml
+    dest=/home/pi/.kodi/userdata/guisettings.xml
+    owner=pi
+    group=pi
+    mode=0644
+    force=no
