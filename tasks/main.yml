@@ -43,20 +43,20 @@
     update_cache=yes
     cache_valid_time=3600
 
-- name: create kodi directory
-  become: yes
-  file:
-    name=/home/pi/.kodi/userdata
-    state=directory
-    owner=pi
-    group=pi
-
-- name: install guisettings.xml in order to see a menu
-  become: yes
-  copy:
-    src=guisettings.xml
-    dest=/home/pi/.kodi/userdata/guisettings.xml
-    owner=pi
-    group=pi
-    mode=0644
-    force=no
+    #- name: create kodi directory
+    #  become: yes
+    #  file:
+    #    name=/home/pi/.kodi/userdata
+    #    state=directory
+    #    owner=pi
+    #    group=pi
+    #
+    #- name: install guisettings.xml in order to see a menu
+    #  become: yes
+    #  copy:
+    #    src=guisettings.xml
+    #    dest=/home/pi/.kodi/userdata/guisettings.xml
+    #    owner=pi
+    #    group=pi
+    #    mode=0644
+    #    force=no
