@@ -71,7 +71,7 @@
 - name: enable startup script for kodi
   become: yes
   replace:
-    dest=/etc/defaults/kodi
+    dest=/etc/default/kodi
     regexp=^ENABLED=0
     replace=ENABLED=1
 
