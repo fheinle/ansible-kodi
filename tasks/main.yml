@@ -25,6 +25,7 @@
   become: yes
   user:
     name=pi
+    state=present
     append=yes
     groups=audio,video,input,dialout,plugdev,tty
 
