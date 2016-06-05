@@ -21,13 +21,13 @@
     src=permissions.rules
     dest=/etc/udev/rules.d/10-permissions.rules
 
-- name: add pi user to relevant groups for kodi
+- name: add kodi user to relevant groups for kodi
   become: yes
   user:
-    name=pi
+    name=kodi
     state=present
     append=yes
-    groups=audio,video,input,dialout,plugdev,tty
+    groups=audio,video,input,dialout,plugdev,tty,shares
 
 - name: set gpu memory to 160 MB for kodi
   become: yes
@@ -61,3 +61,23 @@
     #    group=pi
     #    mode=0644
     #    force=no
+
+- name: disable kodi autostart
+  become: yes
+  service:
+    name=kodi
+    enabled=no
+
+- name: enable startup script for kodi
+  become: yes
+  replace:
+    dest=/etc/defaults/kodi
+    regexp=^ENABLED=0
+    replace=ENABLED=1
+
+- name: allow kodi user to switch vt
+  become: yes
+  action: 'copy
+    dest="/etc/sudoers.d/kodi-sudoers"
+    content="kodi ALL = (root) NOPASSWD: /bin/chvt\n"
+    validate="visudo -c -f %s"'
