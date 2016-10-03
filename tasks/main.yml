@@ -21,6 +21,12 @@
     src=permissions.rules
     dest=/etc/udev/rules.d/10-permissions.rules
 
+- name: create shares group
+  become: yes
+  group:
+    name=shares
+    state=present
+
 - name: add kodi user to relevant groups for kodi
   become: yes
   user:
