@@ -6,7 +6,7 @@ python: "2.7"
 before_install:
   - sudo add-apt-repository ppa:team-xbmc/ppa -y
   - sudo apt-get update -qq
-  - sudo mkdir -p /home/.kodi/userdata
+  - sudo mkdir -p /home/kodi/.kodi/userdata
   - sudo touch /boot/config.txt
 
 install:
