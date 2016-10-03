@@ -8,6 +8,7 @@ before_install:
   - sudo apt-get update -qq
   - sudo mkdir -p /home/kodi/.kodi/userdata
   - sudo touch /boot/config.txt
+  - chmod +x tests/start.sh
 
 install:
   # Install Ansible.
@@ -38,7 +39,7 @@ script:
   - "id kodi|grep -q video"
   - grep -q "ENABLED=1" /etc/default/kodi
   - test -e /etc/sudoers.d/kodi-sudoers
-  - sudo /etc/init.d/kodi start
+  - sudo tests/start.sh
   - curl "http://localhost:8080"
 
 notifications:
