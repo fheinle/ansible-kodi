@@ -38,6 +38,8 @@ script:
   - "id kodi|grep -q video"
   - grep -q "ENABLED=1" /etc/default/kodi
   - test -e /etc/sudoers.d/kodi-sudoers
+  - sudo /etc/init.d/kodi start
+  - curl "http://localhost:8080"
 
 notifications:
   slack: suedseite:y3ypqbTi5Mhr8YGSw5ccVLa2
