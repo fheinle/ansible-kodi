@@ -44,15 +44,15 @@
     update_cache=yes
     cache_valid_time=3600
 
-    #- name: install guisettings.xml in order to see a menu
-    #  become: yes
-    #  copy:
-    #    src=guisettings.xml
-    #    dest=/home/pi/.kodi/userdata/guisettings.xml
-    #    owner=pi
-    #    group=pi
-    #    mode=0644
-    #    force=no
+- name: install guisettings.xml in order to see a menu
+  become: yes
+  copy:
+    src=guisettings.xml
+    dest=/home/kodi/.kodi/userdata/guisettings.xml
+    owner=kodi
+    group=kodi
+    mode=0644
+    force=no
 
 - name: disable kodi autostart
   become: yes
