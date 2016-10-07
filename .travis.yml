@@ -41,7 +41,6 @@ script:
   - test -e /etc/sudoers.d/kodi-sudoers
   - sudo tests/start.sh
   - pgrep kodi
-  - curl "http://localhost:8080"
 
 notifications:
   slack: suedseite:y3ypqbTi5Mhr8YGSw5ccVLa2
