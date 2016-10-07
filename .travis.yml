@@ -38,9 +38,9 @@ script:
   - test -x /usr/bin/kodi
   - "id kodi|grep -q shares"
   - "id kodi|grep -q video"
-  - grep -q "ENABLED=1" /etc/default/kodi
   - test -e /etc/sudoers.d/kodi-sudoers
   - sudo tests/start.sh
+  - pgrep kodi
   - curl "http://localhost:8080"
 
 notifications:
