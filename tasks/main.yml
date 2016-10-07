@@ -65,7 +65,7 @@
   service:
     name=kodi
     enabled=no
-  when: ansible_env.IN_CI != 1
+  when: ciRunning != 1
 
 - name: enable startup script for kodi
   become: yes
