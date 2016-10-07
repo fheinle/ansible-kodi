@@ -8,6 +8,7 @@ before_install:
   - sudo apt-get update -qq
   - sudo mkdir -p /home/kodi/.kodi/userdata
   - sudo touch /boot/config.txt
+  - sudo touch /etc/default/kodi
   - chmod +x tests/start.sh
 
 install:
