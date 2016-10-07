@@ -80,3 +80,4 @@
     dest="/etc/sudoers.d/kodi-sudoers"
     content="kodi ALL = (root) NOPASSWD: /bin/chvt\n"
     validate="visudo -c -f %s"'
+    mode=0440
