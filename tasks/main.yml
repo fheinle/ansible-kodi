@@ -63,6 +63,16 @@
     update_cache=yes
     cache_valid_time=3600
 
+- name: create kodi userdata directory
+  become: yes
+  file:
+    name=/home/kodi/.kodi/userdata
+    state=directory
+    owner=kodi
+    group=kodi
+    mode=0755
+    recurse=yes
+
 - name: install guisettings.xml in order to see a menu
   become: yes
   copy:
