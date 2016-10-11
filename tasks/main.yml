@@ -41,6 +41,8 @@
     dest=/boot/config.txt
     regexp="^gpu_mem"
     line="gpu_mem=160"
+  when:
+    - ansible_virtualization_type != 'virtualbox'
 
 - name: install kodi
   become: yes
@@ -73,6 +75,8 @@
     dest=/etc/default/kodi
     regexp=^ENABLED=0
     replace=ENABLED=1
+  when:
+    - ansible_virtualization_type != 'virtualbox'
 
 - name: allow kodi user to switch vt
   become: yes
