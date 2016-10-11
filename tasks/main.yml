@@ -88,7 +88,7 @@
   service:
     name=kodi
     enabled=no
-  when: ciRunning != 1
+  when: ciRunning is not defined
 
 - name: enable startup script for kodi
   become: yes
