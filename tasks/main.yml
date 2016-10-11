@@ -44,6 +44,17 @@
   when:
     - ansible_virtualization_type != 'virtualbox'
 
+# Raspbian comes with a repo providing kodi, plain Debian jessie doesn't
+- name: add kodi repository
+  become: yes
+  apt_repository:
+    repo="deb http://http.debian.net/debian jessie-backports main"
+    filename="jessie-backports"
+    state=present
+    update_cache=yes
+  when:
+    - ansible_virtualization_type == 'virtualbox'
+
 - name: install kodi
   become: yes
   apt:
