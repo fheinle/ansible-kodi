@@ -83,6 +83,15 @@
     mode=0644
     force=no
 
+- name: install kodi init script
+  become: yes
+  copy:
+    src=files/kodi.init
+    dest=/etc/init.d/kodi
+    owner=root
+    group=root
+    mode=0755
+
 - name: disable kodi autostart
   become: yes
   service:
