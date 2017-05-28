@@ -69,7 +69,7 @@
     name=/home/kodi/.kodi/userdata
     state=directory
     owner=kodi
-    group=kodi
+    group=shares
     mode=0755
     recurse=yes
 
@@ -79,7 +79,7 @@
     src=guisettings.xml
     dest=/home/kodi/.kodi/userdata/guisettings.xml
     owner=kodi
-    group=kodi
+    group=shares
     mode=0644
     force=no
 
